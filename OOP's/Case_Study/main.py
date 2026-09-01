@@ -1,42 +1,49 @@
-class Login:
+from emp_manage import EmpManage
+class Main:
+    def login():
+        print('Login Page')
 
-    def login(self):
+        uid = 'admin'
+        passw = '1234'
 
-        userrid = "admin"
-        password = "1234"
+        username =input('enter username: ')
+        password =input('enter passward: ')
 
-        uname = input("Enter UserName: ")
-        passw = input("Enter Password: ")
-
-        if uname == userrid and passw == password:
-            print("\nLogin Successful...")
+        if(uid == username and passw == password):
+            print('\nlogin sucessfully..\n')
+            emp =EmpManage()
 
             while True:
-                print("\nEnter 1 for Add Emp")
-                print("Enter 2 for Display Emp")
-                print("Enter 3 for Search Emp")
-                print("Enter 4 for Update Emp")
-                print("Enter 5 for Delete Emp")
-                print("Enter 6 for Exit")
+                print("\n Print the Number to Perform Operations")
+                print("\n1. Add Emp")
+                print("2. Display Emp")
+                print("3. Search Emp")
+                print("4. Update Emp")
+                print("5. Delete Emp")
+                print("6. Exit")
 
                 ch = int(input("Enter the choice: "))
 
                 if ch == 1:
-                    print("Add")
+                    emp.addEmp()
+                    print("Emp Added")
 
                 elif ch == 2:
-                    print("Display")
+                    print("Display Employees Details \n")
+                    emp.displayEmp()
 
                 elif ch == 3:
-                    print("Search")
+                    print("Searching Employees Details...")
+                    emp.searchEmp()
 
                 elif ch == 4:
-                    print("Update")
+                    emp.updateEmp()
 
                 elif ch == 5:
-                    print("Delete")
+                    emp.delEmp()
 
                 elif ch == 6:
+                    emp.ExistEmp()
                     print("Thank you for Visit!")
                     break
 
@@ -47,5 +54,4 @@ class Login:
             print("Invalid UserName or Password..")
 
 
-obj = Login()
-obj.login()
+Main.login()
