@@ -1,55 +1,51 @@
-# E-Commerce Sales Analysis Dashboard
+# 🛒 E-Commerce Sales Analysis Dashboard
 
-## Project Overview
-
-This project is an interactive E-Commerce Sales Analysis Dashboard created using Microsoft Excel.
-
-The dashboard analyzes e-commerce order and sales data to identify patterns and trends related to sales performance, customer demographics, order status, sales channels, and geographical distribution.
-
-The project demonstrates how raw business data can be transformed into meaningful insights using Excel data analysis and visualization techniques.
+> 📊 An interactive Microsoft Excel dashboard for analyzing e-commerce sales, orders, customers, channels, and geographical performance.
 
 ---
 
-## Project Objective
+## 📌 Project Overview
 
-The main objective of this project is to analyze e-commerce sales and order data and present the findings through an interactive Excel dashboard.
+This project is an **interactive E-Commerce Sales Analysis Dashboard** created using **Microsoft Excel**.
 
-The dashboard focuses on:
+The dashboard transforms raw e-commerce data into meaningful business insights using **Pivot Tables, Pivot Charts, and interactive Slicers**.
 
-- Analyzing monthly sales and order trends
-- Comparing sales between men and women
-- Understanding order status distribution
-- Identifying the top-performing states
-- Analyzing orders by age group and gender
-- Analyzing orders across different sales channels
+The analysis focuses on:
 
----
-
-## Dataset
-
-The dataset used in this project is an e-commerce sales dataset containing order, customer, product, and sales-related information.
-
-The dataset contains more than 31,000 records and multiple categorical and numerical fields, making it suitable for business analysis and dashboard creation.
-
-### Dataset Features
-
-Some of the important fields include:
-
-- Gender
-- Age
-- Date
-- Status
-- Channel
-- Category
-- Quantity
-- Amount
-- Ship City
-- Ship State
-- B2B
+- 📈 Monthly sales and order trends
+- 👥 Customer demographics
+- 🚻 Gender-wise sales performance
+- 📦 Order status analysis
+- 🗺️ State-wise sales performance
+- 🛍️ Sales channel analysis
+- 👨‍👩‍👧 Age and gender-wise order analysis
 
 ---
 
-## Business Questions
+## 🖼️ Dashboard Preview
+
+<p align="center">
+  <img src="Dashboard.png" alt="E-Commerce Sales Analysis Dashboard" width="100%">
+</p>
+
+---
+
+## 🎯 Project Objective
+
+The main objective of this project is to analyze **e-commerce sales and order data** and present the findings through an interactive Excel dashboard.
+
+The dashboard was created to:
+
+- Understand monthly sales and order trends
+- Compare sales performance between men and women
+- Analyze order status distribution
+- Identify top-performing states
+- Understand order distribution across age groups and genders
+- Analyze orders across different sales channels
+
+---
+
+## 💡 Business Questions
 
 The dashboard was designed to answer the following business questions:
 
@@ -62,7 +58,7 @@ The dashboard was designed to answer the following business questions:
 
 ---
 
-## Analysis Performed
+## 📊 Analysis Performed
 
 The following analysis was performed using Microsoft Excel:
 
@@ -76,40 +72,43 @@ The following analysis was performed using Microsoft Excel:
 
 ---
 
-## Dashboard
+## 📊 Dashboard Components
 
-The dashboard contains multiple Pivot Charts and interactive slicers for exploring the e-commerce data.
+The dashboard contains multiple **Pivot Charts** and **interactive Slicers**.
 
-### Dashboard Components
+### 📈 Charts
 
-- Orders vs Sales by Month
-- Sales: Men vs Women
-- Order Status Distribution
-- Sales: Top 5 States
-- Orders: Age & Gender
-- Orders: Channel
-- Category Slicer
-- Channel Slicer
-- Month Slicer
+- **Orders vs Sales by Month**
+- **Sales: Men vs Women**
+- **Order Status**
+- **Sales: Top 5 States**
+- **Orders: Age & Gender**
+- **Orders: Channel**
 
-The slicers allow users to filter the dashboard and explore the data from different perspectives.
+### 🎛️ Interactive Slicers
+
+- 🛍️ Category
+- 🏪 Channel
+- 📅 Month
+
+These slicers allow users to filter the dashboard and explore the data from different perspectives.
 
 ---
 
-## Key Insights
+## 🔍 Key Insights
 
 The dashboard helps identify:
 
 - Monthly changes in sales and order volume
 - Differences in sales between male and female customers
-- The distribution of delivered, cancelled, returned, and other order statuses
+- Distribution of different order statuses
 - States with higher sales performance
-- Order distribution across different age groups and genders
-- The contribution of different sales channels to total orders
+- Order distribution across age groups and genders
+- Contribution of different sales channels to total orders
 
 ---
 
-## Tools & Skills Used
+## 🛠️ Tools & Skills Used
 
 ### Microsoft Excel
 
@@ -124,14 +123,16 @@ The dashboard helps identify:
 
 ---
 
-## Project Structure
+## 📁 Project Structure
 
 ```text
 01_ECommerce_Sales_Dashboard
 │
-├── Data
+├── 📂 Data
 │   └── raw_dataset.xlsx
 │
-├── ECommerce_Sales_Dashboard.xlsx
+├── Dashboard.png
+│
+├── 📊 ECommerce_Sales_Dashboard.xlsx
 │
 └── README.md
