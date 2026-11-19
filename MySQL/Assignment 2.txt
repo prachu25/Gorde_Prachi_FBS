@@ -1,0 +1,278 @@
+Assignment 2
+
+1) Create the table Member, Books and Issue without any constraints as
+mentioned in the schema description above.
+
+2) View the structure of the tables.
++-------------------+--------------+------+-----+---------+-------+
+| Field             | Type         | Null | Key | Default | Extra |
++-------------------+--------------+------+-----+---------+-------+
+| Member_Id         | int          | YES  |     | NULL    |       |
+| Member_Name       | varchar(30)  | YES  |     | NULL    |       |
+| Member_address    | varchar(50)  | YES  |     | NULL    |       |
+| Acc_Open_Date     | date         | YES  |     | NULL    |       |
+| Membership_type   | varchar(20)  | YES  |     | NULL    |       |
+| Fees_paid         | int          | YES  |     | NULL    |       |
+| Max_Books_Allowed | int          | YES  |     | NULL    |       |
+| Penalty_Amount    | decimal(7,2) | YES  |     | NULL    |       |
++-------------------+--------------+------+-----+---------+-------+
+8 rows in set (0.02 sec)
+
+mysql> desc books;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| Book_No     | int          | NO   | PRI | NULL    |       |
+| Book_Name   | varchar(30)  | YES  |     | NULL    |       |
+| Author_name | varchar(30)  | YES  |     | NULL    |       |
+| Cost        | decimal(7,2) | YES  |     | NULL    |       |
+| Category    | char(10)     | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> desc issue;
++--------------+------+------+-----+---------+-------+
+| Field        | Type | Null | Key | Default | Extra |
++--------------+------+------+-----+---------+-------+
+| Lib_Issue_Id | int  | NO   | PRI | NULL    |       |
+| Book_No      | int  | YES  | MUL | NULL    |       |
+| Member_Id    | int  | YES  | MUL | NULL    |       |
+| Issue_Date   | date | YES  |     | NULL    |       |
+| Return_date  | date | YES  |     | NULL    |       |
++--------------+------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+QUE3) Drop the Member table
+
+	drop table member
+
+QUE4) Create the table Member again as per the schema description with the
+following constraints.
+a. Member_Id – Primary Key
+b. Membership_type - ‘Lifetime’,’ Annual’, ‘Half Yearly’,’ Quarterly’
+
+CREATE TABLE Member (
+    Member_Id INT PRIMARY KEY,
+    Member_Name VARCHAR(30),
+    Member_address VARCHAR(50),
+    Acc_Open_Date DATE,
+    Membership_type ENUM(
+        'Lifetime',
+        'Annual',
+        'Half Yearly',
+        'Quarterly'
+    ),
+    Fees_paid INT,
+    Max_Books_Allowed INT,
+    Penalty_Amount DECIMAL(7,2)
+);
+
+
+5) Modify the table Member increase the width of the member name to 30
+characters.
+
+	alter table member
+	modify member_name varchar(30);
+
+
+6) Add a column named as Reference of Char(30) to Issue table.
+
+	alter table issue
+	add column reference char(30);
+
+7) Delete/Drop the column Reference from Issue.
+
+	alter table issue
+	drop column reference
+
+8) Rename the table Issue to Lib_Issue.
+	rename table issue to lib_issue;
+
+
+9) Insert following data in table Member
+
++-----------+-------------+---------------+---------------+-----------------+-----------+-------------------+----------------+
+| Member ID | Member Name | Member Address| Acc_Open_Date  | Membership_type | Fees_Paid | Max_Books_Allowed | Penalty_Amount |
++-----------+-------------+---------------+---------------+-----------------+-----------+-------------------+----------------+
+| 1         | Richa Sharma| Pune          | 10-12-05      | Lifetime        | 25000     | 5                 | 50             |
+| 2         | Garima Sen  | Pune          | Current Date  | Annual          | 1000      | 3                 | NULL           |
++-----------+-------------+---------------+---------------+-----------------+-----------+-------------------+----------------+
+
+
+INSERT INTO Member VALUES
+(1, 'Richa Sharma', 'Pune',
+ STR_TO_DATE('10-12-05','%d-%m-%y'),
+ 'Lifetime', 25000, 5, 50.00),
+
+(2, 'Garima Sen', 'Pune',
+ CURDATE(),
+ 'Annual', 1000, 3, NULL);
+
+
+
+10. Insert at least 5 more records
+
+
+INSERT INTO Member VALUES
+(3, 'Amit Patil', 'Mumbai', '2024-01-15',
+ 'Annual', 1500, 4, 100.00),
+
+(4, 'Neha Gupta', 'Pune', '2024-03-20',
+ 'Quarterly', 500, 3, 0.00),
+
+(5, 'Rahul Shah', 'Nagpur', '2024-05-10',
+ 'Half Yearly', 800, 5, 200.00),
+
+(6, 'Priya Desai', 'Nashik', '2024-06-12',
+ 'Annual', 1200, 4, 50.00),
+
+(7, 'Karan Joshi', 'Pune', '2024-08-18',
+ 'Lifetime', 25000, 6, 0.00);
+
+
+
+11. Decrease Member_Name width to 20
+
+	alter table membe
+	modify member_name varchar(20);
+
+13) Generate another table named Member101 using a Create command
+along with a simple SQL query on member table.
+
+	CREATE TABLE Member101 AS
+	SELECT * FROM Member;
+
+14) Add the constraints on columns max_books_allowed and penalty_amt
+as follows
+a. max_books_allowed < 100
+b. penalty_amt maximum 1000
+Also give names to the constraints.
+
+	ALTER TABLE Member
+	ADD CONSTRAINT chk_max_books
+	CHECK (Max_Books_Allowed < 100);
+
+	ALTER TABLE Member
+	ADD CONSTRAINT chk_penalty
+	CHECK (Penalty_Amount <= 1000);
+
+15) Drop the table books.
+
+	drop table books;
+
+16) create books table with constraints
+
+CREATE TABLE Books (
+    Book_No INT PRIMARY KEY,
+    Book_Name VARCHAR(30) NOT NULL,
+    Author_name VARCHAR(30),
+    Cost DECIMAL(7,2),
+    Category CHAR(10),
+    CONSTRAINT chk_category CHECK (
+        Category IN (
+            'System',
+            'Fiction',
+            'Database',
+            'RDBMS',
+            'Others'
+        )
+    )
+);
+
+17) Insert given records
+
+INSERT INTO Books VALUES
+(101, 'Let us C', 'Denis Ritchie', 450, 'System'),
+
+(102, 'Oracle - Complete Ref', 'Loni', 550, 'Database'),
+
+(103, 'Mastering SQL', 'Loni', 250, 'Database'),
+
+(104, 'PL SQL-Ref', 'Scott Urman', 750, 'Database');
+
+
+19. View data using SELECT
+
+	select * from books;
+
+20) insert another record
+
+INSERT INTO Books VALUES
+(105, 'National Geographic', 'Adis Scott', 1000, 'Others');
+
+
+21) Rename Lib_Issue to Issue
+
+	rename lib_issue to issue;
+
+22) Drop issue table
+
+	drop table issue;
+
+23. Create Issue table with constraints
+CREATE TABLE Issue (
+    Lib_Issue_Id INT PRIMARY KEY,
+    Book_No INT,
+    Member_Id INT,
+    Issue_Date DATE,
+    Return_date DATE,
+
+    CONSTRAINT fk_book
+    FOREIGN KEY (Book_No)
+    REFERENCES Books(Book_No),
+
+    CONSTRAINT fk_member
+    FOREIGN KEY (Member_Id)
+    REFERENCES Member(Member_Id)
+);
+
+25. Remove constraints from Issue table
+
+	alter table issue
+	drop foreign key fk_book;
+
+	alter table issue
+	drop forgine key fk_member;
+
+the remove the primary key,
+
+	alter table issue
+	drop primary key;
+
+
+
+
+30. View data and structure of all three tables
+
+DESC Member;
+DESC Issue;
+DESC Books;
+
+SELECT * FROM Member;
+SELECT * FROM Issue;
+SELECT * FROM Books;
+
+32. Delete records where Member_Id = 1 and Issue_Date is before 10-Dec-06
+
+	DELETE FROM Issue
+	WHERE Member_Id = 1
+	AND Issue_Date < '2006-12-10';
+
+33. Delete books having categories other than RDBMS and Database
+
+	delete from books
+	where category not in ('RDBMS','Database');
+
+34. Drop member table
+
+	drop table member;
+
+35) drop books table
+
+	drop table books;
+
+
+
+
+
+
